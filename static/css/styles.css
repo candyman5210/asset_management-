@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+header {
+    background-color: #1e1e1e;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #f0f0f0;
+}
+
+.overview {
+    margin-bottom: 30px;
+}
+
+.assets {
+    margin-top: 40px; /* Add more space between the section header and cards */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px; /* Increase gap between cards */
+}
+.asset-card {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.asset-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+}
+
+.asset-image {
+    width: 100%;
+    border-radius: 8px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.asset-details {
+    margin-top: 15px; /* Increase space between image and text */
+    text-align: center;
+}
+.asset-name {
+    font-weight: bold;
+    font-size: 1.2em; /* Larger font for asset names */
+}
+.asset-description {
+    font-size: 0.9em;
+    color: #cccccc; /* Lighter color for descriptions */
+}
+
+footer {
+    background-color: #1e1e1e;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+/* Ensure header spans full width */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #2c3e50; /* Dark background for header */
+}
+
+/* Navigation links styling */
+.nav-links {
+    display: flex;
+    gap: 20px; /* Space between links */
+    margin-left: auto; /* Pushes links to the right side */
+}
+
+/* Individual link styling */
+.nav-links a {
+    color: #fff; /* White text color */
+    text-decoration: none;
+    font-weight: bold; /* Bold text */
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover and active link styling */
+.nav-links a:hover,
+.nav-links a:focus,
+.nav-links a.active {
+    background-color: #3498db; /* Blue background on hover or active */
+    color: #fff; /* White text color */
+}
