@@ -34,6 +34,11 @@
                 <input type="password" id="confirmPassword" name="confirmPassword" required>
             </div>
             <button type="submit">Register</button>
+            <div>
+            {% for message in messages %}
+                <h5>{{message}}</h5>
+            {% endfor %}
+            </div>
         </form>
     </div>
     <script src="{% static "js/script1.js" %}"></script>

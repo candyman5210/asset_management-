@@ -60,8 +60,13 @@
         <h1>Asset Management Dashboard</h1>
         <div class="nav-links">
             <a href="{% url 'MyApp:homepage' %}">Home</a>
-            <a href="">Login</a>
-            <a href="{% url 'registration:registration' %}">Sign Up</a>
+            {% if user.is_authenticated %}
+                <a>Hello, {{ user.first_name }}</a>
+                <a href="{% url 'registration:sign_out' %}">Sign Out</a>
+            {% else %}
+                <a href="{% url 'registration:login' %}">Login</a>
+                <a href="{% url 'registration:registration' %}">Sign Up</a>
+            {% endif %}
         </div>
     </header>
     <main>
@@ -73,18 +78,39 @@
         <section class="assets">
 
             {% for item in items  %}
-           <div class="asset-card">
-                <img src="{{item.image.url}}" alt="Asset Image" class="asset-image">
-                <div class="asset-details">
-                    <h3 class="asset-name">{{ item.name }}</h3>
-                    <p class="asset-description">{{ item.description }}.</p>
-                    <p class="asset-description" name = 'value'>No. available : {{ item.Value }}.</p> 
-
-                    {% if item.available %}
-                    <h4>READY TO USE</h4>
-                    {% endif %}           
+                {% if user.is_authenticated %}
+                    
+                    <div class="asset-card">
+                    <img src="{{item.image.url}}" alt="Asset Image" class="asset-image">
+                    <div class="asset-details">
+                            <h3 class="asset-name">{{ item.name }}</h3>
+                            <p class="asset-description">{{ item.description }}.</p>
+                            <p class="asset-description" name = 'value'>No. available : {{ item.Value }}.</p> 
+                    
+                            {% if item.available %}
+                                <a href=""><button>Place order</button></a>
+                            {% else %}
+                                <a href=""><button>Reserve</button></a>
+                            {% endif %}           
+                    </div>
                 </div>
-            </div>
+                {% else %}
+                    <div class="asset-card">
+                        <img src="{{item.image.url}}" alt="Asset Image" class="asset-image">
+                        <div class="asset-details">
+                                <h3 class="asset-name">{{ item.name }}</h3>
+                                <p class="asset-description">{{ item.description }}.</p>
+                                <p class="asset-description" name = 'value'>No. available : {{ item.Value }}.</p> 
+                        
+                                {% if item.available %}
+                                    <a href="{% url 'registration:login'%}"><button>Place order</button></a>
+                                {% else %}
+                                    <a href="{% url 'registration:login'%}"><button>Reserve</button></a>
+                                {% endif %}           
+                        </div>
+                    </div>
+                {% endif %}
+
             {% endfor %} 
 
             <!-- Add more asset cards as needed -->
@@ -95,3 +121,6 @@
     </footer>
 </body>
 </html>
+
+
+
